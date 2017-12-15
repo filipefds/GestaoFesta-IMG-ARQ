@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+
+<section layout:fragment="conteudo">
+
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de convidados</h1>
+		</div>
+		<div class="panel-body">
+
+			<div layout:include="MensagemGeral"></div>
+
+			<form class="form-inline" method="POST" th:object="${convidado}"
+				th:action="@{/convidados}" style="margin: 20px 0">
+				<div layout:include="MensagemErro"></div>
+				<div class="form-group">
+					<input type="hidden" th:field="*{id}" /> 
+					<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" />
+					<input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{quantidadeAcompanhantes}" />
+					
+					<select class="form-control" name="festa" th:field="*{festa}">
+						<option th:each="f : ${todasFestas}" th:value="${f.id}" th:text="${f.nome}">
+						</option>
+                    </select>
+					<button type="submit" class="btn btn-primary">Adicionar</button>
+				</div>
+			</form>
+
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Acompanhantes</th>
+						<th>Festa</th>
+						<th colspan="2">Ação</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="c : ${convidados}">
+						<td th:text="${c.nome}"></td>
+						<td th:text="${c.quantidadeAcompanhantes}"></td>
+						<td th:text="${c.festa.nome}"></td>
+						<td><a th:href="@{/convidados/alterar/}+${c.id}" class="glyphicon glyphicon-pencil"></a></td>
+						<td><a th:href="@{/convidados/excluir/}+${c.id}" class="glyphicon glyphicon-trash"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+</section>
+</html>

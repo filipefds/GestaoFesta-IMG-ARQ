@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<img th:src="@{/images/citi.png}" class="logo"
+			style="margin-left: 30px;" />
+	</div>
+</div>
+
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+
+		</div>
+
+
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{/}">Apresentação <span class="sr-only">(current)</span></a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">Cadastros <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{/convidados}">Convidados</a></li>
+						<li><a th:href="@{/festas}">Festas</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a th:href="@{/trocasenha}">Troca de Senha</a></li>
+					</ul></li>
+
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+</html>
